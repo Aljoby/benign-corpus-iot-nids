@@ -1,0 +1,25 @@
+# data and data links (never commit data)
+DataSets/
+horuseye_artifact/DataSets/
+data/*
+!data/DATA.md
+*.pcap
+*.pcapng
+*.rar
+*.tar
+*.tar.gz
+*.zip
+# generated outputs, raw scores, work dirs, logs
+outputs/
+logs/
+rows/
+*.pkl.gz
+raw_rmse_*.csv
+roc_record_split_*.csv
+# environment / OS / caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/

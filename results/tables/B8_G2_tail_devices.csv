@@ -1,0 +1,63 @@
+model,top,k,device,type,count,device_share_of_all_benign
+R1 artifact HorusEye,top7,7,xiaomi_gateway,gateway,2,0.04522539215999489
+R1 artifact HorusEye,top7,7,aqara_gateway,gateway,2,0.03626721191016261
+R1 artifact HorusEye,top7,7,xiaomi_camera,camera,1,0.09072553592536979
+R1 artifact HorusEye,top7,7,tplink_camera,camera,1,0.11919108015718348
+R1 artifact HorusEye,top7,7,360_camera,camera,1,0.1686399795533689
+R1 artifact HorusEye,top78,78,tplink_camera,camera,40,0.11919108015718348
+R1 artifact HorusEye,top78,78,360_camera,camera,21,0.1686399795533689
+R1 artifact HorusEye,top78,78,philips_camera,camera,10,0.2325101434458963
+R1 artifact HorusEye,top78,78,xiaomi_gateway,gateway,3,0.04522539215999489
+R1 artifact HorusEye,top78,78,aqara_gateway,gateway,2,0.03626721191016261
+R1 artifact HorusEye,top78,78,xiaomi_camera,camera,1,0.09072553592536979
+R1 artifact HorusEye,top78,78,linksys_router,router,1,0.01496437813488387
+R1 artifact HorusEye,top0.1pct,157,tplink_camera,camera,84,0.11919108015718348
+R1 artifact HorusEye,top0.1pct,157,360_camera,camera,32,0.1686399795533689
+R1 artifact HorusEye,top0.1pct,157,philips_camera,camera,30,0.2325101434458963
+R1 artifact HorusEye,top0.1pct,157,xiaomi_gateway,gateway,3,0.04522539215999489
+R1 artifact HorusEye,top0.1pct,157,skyworth_camera,camera,3,0.08149899364237564
+R1 artifact HorusEye,top0.1pct,157,xiaomi_camera,camera,2,0.09072553592536979
+R1 artifact HorusEye,top0.1pct,157,aqara_gateway,gateway,2,0.03626721191016261
+R1 artifact HorusEye,top0.1pct,157,linksys_router,router,1,0.01496437813488387
+R4 artifact Kitsune,top7,7,360_camera,camera,3,0.1686399795533689
+R4 artifact Kitsune,top7,7,xiaomi_gateway,gateway,2,0.04522539215999489
+R4 artifact Kitsune,top7,7,tplink_camera,camera,1,0.11919108015718348
+R4 artifact Kitsune,top7,7,xiaomi_camera,camera,1,0.09072553592536979
+R4 artifact Kitsune,top78,78,360_camera,camera,50,0.1686399795533689
+R4 artifact Kitsune,top78,78,mercury_wirecamera,camera,8,0.04580045365962749
+R4 artifact Kitsune,top78,78,tplink_camera,camera,6,0.11919108015718348
+R4 artifact Kitsune,top78,78,xiaomi_gateway,gateway,5,0.04522539215999489
+R4 artifact Kitsune,top78,78,skyworth_camera,camera,4,0.08149899364237564
+R4 artifact Kitsune,top78,78,xiaomi_camera,camera,2,0.09072553592536979
+R4 artifact Kitsune,top78,78,hichip_battery_camera,camera,1,0.03376249960065174
+R4 artifact Kitsune,top78,78,ezviz_camera,camera,1,0.021724545541675983
+R4 artifact Kitsune,top78,78,linksys_router,router,1,0.01496437813488387
+R4 artifact Kitsune,top0.1pct,157,360_camera,camera,101,0.1686399795533689
+R4 artifact Kitsune,top0.1pct,157,mercury_wirecamera,camera,16,0.04580045365962749
+R4 artifact Kitsune,top0.1pct,157,tplink_camera,camera,11,0.11919108015718348
+R4 artifact Kitsune,top0.1pct,157,xiaomi_camera,camera,9,0.09072553592536979
+R4 artifact Kitsune,top0.1pct,157,xiaomi_gateway,gateway,8,0.04522539215999489
+R4 artifact Kitsune,top0.1pct,157,skyworth_camera,camera,7,0.08149899364237564
+R4 artifact Kitsune,top0.1pct,157,philips_camera,camera,2,0.2325101434458963
+R4 artifact Kitsune,top0.1pct,157,hichip_battery_camera,camera,1,0.03376249960065174
+R4 artifact Kitsune,top0.1pct,157,ezviz_camera,camera,1,0.021724545541675983
+R4 artifact Kitsune,top0.1pct,157,linksys_router,router,1,0.01496437813488387
+all14 retrained HorusEye (B5),top7,7,360_camera,camera,3,0.1686399795533689
+all14 retrained HorusEye (B5),top7,7,xiaomi_gateway,gateway,2,0.04522539215999489
+all14 retrained HorusEye (B5),top7,7,xiaomi_camera,camera,1,0.09072553592536979
+all14 retrained HorusEye (B5),top7,7,tplink_camera,camera,1,0.11919108015718348
+all14 retrained HorusEye (B5),top78,78,tplink_camera,camera,42,0.11919108015718348
+all14 retrained HorusEye (B5),top78,78,360_camera,camera,22,0.1686399795533689
+all14 retrained HorusEye (B5),top78,78,philips_camera,camera,9,0.2325101434458963
+all14 retrained HorusEye (B5),top78,78,xiaomi_gateway,gateway,2,0.04522539215999489
+all14 retrained HorusEye (B5),top78,78,aqara_gateway,gateway,2,0.03626721191016261
+all14 retrained HorusEye (B5),top78,78,xiaomi_camera,camera,1,0.09072553592536979
+all14 retrained HorusEye (B5),top0.1pct,157,tplink_camera,camera,91,0.11919108015718348
+all14 retrained HorusEye (B5),top0.1pct,157,360_camera,camera,41,0.1686399795533689
+all14 retrained HorusEye (B5),top0.1pct,157,philips_camera,camera,19,0.2325101434458963
+all14 retrained HorusEye (B5),top0.1pct,157,xiaomi_gateway,gateway,2,0.04522539215999489
+all14 retrained HorusEye (B5),top0.1pct,157,xiaomi_camera,camera,2,0.09072553592536979
+all14 retrained HorusEye (B5),top0.1pct,157,aqara_gateway,gateway,2,0.03626721191016261
+gw6 retrained HorusEye (B5),top7,7,360_camera,camera,7,0.1686399795533689
+gw6 retrained HorusEye (B5),top78,78,360_camera,camera,78,0.1686399795533689
+gw6 retrained HorusEye (B5),top0.1pct,157,360_camera,camera,157,0.1686399795533689

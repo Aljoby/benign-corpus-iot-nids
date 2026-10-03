@@ -1,0 +1,37 @@
+model,top,k,type,count,share_in_top,share_of_all_benign
+R1 artifact HorusEye,top7,7,camera,3,0.42857142857142855,0.7938532315261493
+R1 artifact HorusEye,top7,7,gateway,4,0.5714285714285714,0.1911823903389668
+R1 artifact HorusEye,top7,7,router,0,0.0,0.01496437813488387
+R1 artifact HorusEye,top78,78,camera,72,0.9230769230769231,0.7938532315261493
+R1 artifact HorusEye,top78,78,gateway,5,0.0641025641025641,0.1911823903389668
+R1 artifact HorusEye,top78,78,router,1,0.01282051282051282,0.01496437813488387
+R1 artifact HorusEye,top0.1pct,157,camera,151,0.9617834394904459,0.7938532315261493
+R1 artifact HorusEye,top0.1pct,157,gateway,5,0.03184713375796178,0.1911823903389668
+R1 artifact HorusEye,top0.1pct,157,router,1,0.006369426751592357,0.01496437813488387
+R4 artifact Kitsune,top7,7,camera,5,0.7142857142857143,0.7938532315261493
+R4 artifact Kitsune,top7,7,gateway,2,0.2857142857142857,0.1911823903389668
+R4 artifact Kitsune,top7,7,router,0,0.0,0.01496437813488387
+R4 artifact Kitsune,top78,78,camera,72,0.9230769230769231,0.7938532315261493
+R4 artifact Kitsune,top78,78,gateway,5,0.0641025641025641,0.1911823903389668
+R4 artifact Kitsune,top78,78,router,1,0.01282051282051282,0.01496437813488387
+R4 artifact Kitsune,top0.1pct,157,camera,148,0.9426751592356688,0.7938532315261493
+R4 artifact Kitsune,top0.1pct,157,gateway,8,0.050955414012738856,0.1911823903389668
+R4 artifact Kitsune,top0.1pct,157,router,1,0.006369426751592357,0.01496437813488387
+all14 retrained HorusEye (B5),top7,7,camera,5,0.7142857142857143,0.7938532315261493
+all14 retrained HorusEye (B5),top7,7,gateway,2,0.2857142857142857,0.1911823903389668
+all14 retrained HorusEye (B5),top7,7,router,0,0.0,0.01496437813488387
+all14 retrained HorusEye (B5),top78,78,camera,74,0.9487179487179487,0.7938532315261493
+all14 retrained HorusEye (B5),top78,78,gateway,4,0.05128205128205128,0.1911823903389668
+all14 retrained HorusEye (B5),top78,78,router,0,0.0,0.01496437813488387
+all14 retrained HorusEye (B5),top0.1pct,157,camera,153,0.9745222929936306,0.7938532315261493
+all14 retrained HorusEye (B5),top0.1pct,157,gateway,4,0.025477707006369428,0.1911823903389668
+all14 retrained HorusEye (B5),top0.1pct,157,router,0,0.0,0.01496437813488387
+gw6 retrained HorusEye (B5),top7,7,camera,7,1.0,0.7938532315261493
+gw6 retrained HorusEye (B5),top7,7,gateway,0,0.0,0.1911823903389668
+gw6 retrained HorusEye (B5),top7,7,router,0,0.0,0.01496437813488387
+gw6 retrained HorusEye (B5),top78,78,camera,78,1.0,0.7938532315261493
+gw6 retrained HorusEye (B5),top78,78,gateway,0,0.0,0.1911823903389668
+gw6 retrained HorusEye (B5),top78,78,router,0,0.0,0.01496437813488387
+gw6 retrained HorusEye (B5),top0.1pct,157,camera,157,1.0,0.7938532315261493
+gw6 retrained HorusEye (B5),top0.1pct,157,gateway,0,0.0,0.1911823903389668
+gw6 retrained HorusEye (B5),top0.1pct,157,router,0,0.0,0.01496437813488387

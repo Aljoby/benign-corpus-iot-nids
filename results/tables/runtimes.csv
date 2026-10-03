@@ -1,0 +1,31 @@
+step,minutes,peak_ram_GB
+"reproduction R1_A_HE (CPU, artifact control_plane.py)",24.2,9.56
+"reproduction R2_A_MAG (CPU, artifact control_plane.py)",31.1,9.78
+"reproduction R3_A_KITHE (CPU, artifact control_plane.py)",3.7,5.83
+"reproduction R4_A_KIT (CPU, artifact control_plane.py)",4.5,5.88
+"reproduction R5_B_HE (CPU, artifact control_plane.py)",28.0,11.16
+"reproduction R6_B_MAG (CPU, artifact control_plane.py)",31.1,9.66
+"reproduction R7_B_KITHE (CPU, artifact control_plane.py)",4.8,5.54
+"reproduction R8_B_KIT (CPU, artifact control_plane.py)",4.4,5.75
+"HorusEye retraining + evaluation, all14 (MPS, 18 epochs)",27.2,
+"HorusEye retraining + evaluation, rand5_a (MPS, 18 epochs)",14.3,
+"HorusEye retraining + evaluation, rand5_b (MPS, 18 epochs)",11.3,
+"HorusEye retraining + evaluation, cam8 (MPS, 18 epochs)",20.7,
+"HorusEye retraining + evaluation, gw6 (MPS, 18 epochs)",5.9,
+"HorusEye retraining + evaluation, vol_match (MPS, 18 epochs)",15.0,
+"HorusEye retraining + evaluation, os_days1 (MPS, 18 epochs)",3.8,
+"HorusEye retraining + evaluation, os_days2 (MPS, 18 epochs)",6.3,
+"HorusEye retraining + evaluation, os_days3 (MPS, 18 epochs)",8.7,
+"HorusEye retraining + evaluation, os_days5 (MPS, 18 epochs)",14.7,
+"HorusEye retraining + evaluation, all14_seed1 (MPS, 18 epochs)",25.4,
+"HorusEye retraining + evaluation, all14_seed2 (MPS, 18 epochs)",26.2,
+"Kitsune training, all14 (CPU)",9.5,
+"Kitsune training, gw6 (CPU)",2.5,
+"Kitsune training, cam8 (CPU)",7.2,
+"Kitsune training, vol_match (CPU)",4.8,
+"Kitsune training, rand5_a (CPU)",3.9,
+"Kitsune training, rand5_b (CPU)",3.5,
+"Kitsune training, os_days1 (CPU)",1.2,
+"Kitsune training, os_days2 (CPU)",2.1,
+"Kitsune training, os_days3 (CPU)",3.0,
+"Kitsune training, os_days5 (CPU)",5.9,

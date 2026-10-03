@@ -1,0 +1,171 @@
+--- control_plane.py.orig	2026-10-02 01:52:41
++++ control_plane.py	2026-10-02 01:52:41
+@@ -50,6 +50,7 @@
+ 
+ 
+ setup_seed(20)
++DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')  # [repro] CPU fallback
+ 
+ 
+ def data_processing(df, TWO_D):  # for testing
+@@ -212,7 +213,7 @@
+         model.eval()
+         y = []
+         for i in range(0, X.shape[0], 16):
+-            b_x = X[i:i + 16].cuda()
++            b_x = X[i:i + 16].to(DEVICE)
+             temp_x = model(b_x)
+             temp_y = model.pred(temp_x, b_x)
+             y.extend(temp_y)
+@@ -230,12 +231,12 @@
+         model.eval()
+         total_ = 0
+         for i in range(0, X.shape[0], pk_num):
+-            b_x = X[i:i + pk_num].cuda()
++            b_x = X[i:i + pk_num].to(DEVICE)
+             temp_x = test_model(b_x)
+             temp_y = model.excute_RMSE(temp_x, b_x)
+             total_ = i + pk_num
+     end = time.time()
+-    memory = torch.cuda.memory_allocated(device=0)
++    memory = torch.cuda.memory_allocated(device=0) if torch.cuda.is_available() else 0  # [repro]
+     print('total exc pk_num', total_)
+     print('throughput is {:} pk/s'.format(total_ / (end - begin)))
+     print('memory is {:} MB/s'.format((memory / 1024)))
+@@ -251,7 +252,7 @@
+         rmse_list = []
+         eval_y_label = []
+         for batch_idx, (data, target) in enumerate(test_loader):
+-            data = data.cuda()
++            data = data.to(DEVICE)
+             eval_output = test_model(data)
+             # pred_y = model.pred(eval_output, data, mean_benign,std_benign)
+             rmse_eval = model.excute_RMSE(eval_output, data)
+@@ -259,7 +260,7 @@
+             eval_y_label.extend(target)
+     end = time.time()
+     total_ = len(test_loader) * BATCH_SIZE
+-    memory = torch.cuda.memory_allocated(device=0)
++    memory = torch.cuda.memory_allocated(device=0) if torch.cuda.is_available() else 0  # [repro]
+     print('test_loader')
+     print('total exc pk_num', total_)
+     print('throughput is {:} pk/s'.format(total_ / (end - begin)))
+@@ -318,7 +319,7 @@
+     criterion = nn.MSELoss()
+     optimizier = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)  #
+     if torch.cuda.is_available():
+-        model.cuda()
++        model.to(DEVICE)
+ 
+     for epoch in range(epoches):
+         if epoch in [epoches * 0.5, epoches * 1.0]:  # , epoches * 0.5
+@@ -328,7 +329,7 @@
+         model.train()
+         for step, (b_x, b_y) in enumerate(train_loader):
+             # forward
+-            b_x = b_x.cuda()
++            b_x = b_x.to(DEVICE)
+             output = model(b_x)
+             loss = criterion(output, b_x)
+             loss = torch.sqrt(loss)  # RMSE
+@@ -359,7 +360,7 @@
+             model.eval()
+             loss_normal = 0
+             for i in range(0, X_normal_eval.shape[0], 16):
+-                b_x = X_normal_eval[i:i + 16].cuda()
++                b_x = X_normal_eval[i:i + 16].to(DEVICE)
+                 temp_x = model(b_x)
+                 loss_temp = criterion(temp_x, b_x)
+                 loss_normal += loss_temp
+@@ -369,7 +370,7 @@
+ 
+             loss_attack = 0
+             for i in range(0, X_attack_eval.shape[0], 16):
+-                b_x = X_attack_eval[i:i + 16].cuda()
++                b_x = X_attack_eval[i:i + 16].to(DEVICE)
+                 temp_x = model(b_x)
+                 loss_temp = criterion(temp_x, b_x)
+                 loss_attack += loss_temp
+@@ -492,14 +493,14 @@
+ if __name__ == "__main__":
+     # Hyper parameters
+     # network and training
+-    KITSUNE = False
++    KITSUNE = os.environ.get('HE_KITSUNE', '0') == '1'  # [repro] was hard-coded False
+     OPEN_SOURCE =False
+     TRAIN = False
+     TEST_ROBUST=False
+     TEST = True
+     Use_filter = True
+     Per_Attack=True
+-    Test_Throughput=True
++    Test_Throughput=False  # [repro] was True; GPU-only, does not affect detection metrics
+     PORT = True
+     TWO_D = True
+     BATCH_SIZE = 256
+@@ -561,7 +562,8 @@
+     #attack dataset path
+     attack_path = './DataSets/Anomaly/attack_kitsune/'
+ 
+-    torch.cuda.set_device(0)
++    if torch.cuda.is_available():  # [repro]
++        torch.cuda.set_device(0)
+     device_list_gateway = ['aqara_gateway', 'gree_gateway', 'ihorn_gateway', 'tcl_gateway', 'xiaomi_gateway', 'linksys_router']
+     device_list_camera = ['philips_camera', '360_camera', 'ezviz_camera', 'hichip_battery_camera', 'mercury_wirecamera',
+                    'skyworth_camera', 'tplink_camera', 'xiaomi_camera']
+@@ -622,7 +624,7 @@
+     if TEST:  # for test
+         # control plane
+         if torch.cuda.is_available() and not KITSUNE and not INT8:
+-            model.cuda()
++            model.to(DEVICE)
+         print('loading testing data...')
+         if OPEN_SOURCE:
+             df_normal_test_con = open_source_load_iot_data_seq(selected_list=[1, 3, 5, 8])
+@@ -693,7 +695,7 @@
+                 # load AE checkpoints
+                 # it will add new key in training profile phase, causing to calculate the FLOPs and MACs.
+                 # and we drop this key by setting the strict to False
+-                model.load_state_dict(torch.load(model_save_path,map_location='cuda:0'), strict=False)
++                model.load_state_dict(torch.load(model_save_path,map_location=DEVICE), strict=False)
+ 
+                 # load TensorRT model
+                 if INT8:
+@@ -723,6 +725,19 @@
+                 # we believe that the pass data is normal data. Thus, we set its' rmse 0
+                 rmse_list.extend(list(np.zeros(pass_data.shape[0])))
+ 
++            # [repro] log rows entering the ROC (labels: 0 benign, 1 attack)
++            _y = np.asarray([int(v) for v in eval_y_label])
++            _scored_y = after_filer_test['class'].astype(int).values
++            _pass_y = pass_data['class'].astype(int).values if Use_filter else np.array([], dtype=int)
++            pd.DataFrame([{
++                'attack_type': attack_type,
++                'benign_test_con_after_10pct': len(df_normal_test_con), 'benign_test_data_after_10pct': len(df_normal_test_data),
++                'attack_con_rows': len(df_attack_test), 'attack_data_rows': len(df_attack_test_data),
++                'con_after_5tuple_filter': len(df_test_con),
++                'scored_benign': int((_scored_y == 0).sum()), 'scored_attack': int((_scored_y != 0).sum()),
++                'passed_rmse0_benign': int((_pass_y == 0).sum()), 'passed_rmse0_attack': int((_pass_y != 0).sum()),
++                'roc_benign': int((_y == 0).sum()), 'roc_attack': int((_y != 0).sum()), 'roc_total': len(_y),
++            }]).to_csv('./result/roc_counts.csv', mode='a', header=not os.path.exists('./result/roc_counts.csv'), index=False)
+             # Calculate the auroc of the overall framework
+             fpr, tpr, thresholds = roc_curve(eval_y_label, rmse_list)
+ 
+@@ -792,6 +807,8 @@
+                     roc_record.to_csv('./result/HorusEye/roc_record_split_'+attack_type+'.csv')
+                 elif KITSUNE:
+                     roc_record.to_csv('./result/Kitsune/roc_record_split_' + attack_type + '.csv')
++                else:  # [repro] original saved nothing for experiment A Magnifier
++                    roc_record.to_csv('./result/Magnifier/roc_record_split_' + attack_type + '.csv')
+         if OPEN_SOURCE:
+             if Use_filter:
+                 record_attack.to_csv('./result/Open-Source/HorusEye/record_attack.csv')
+@@ -804,6 +821,8 @@
+                 record_attack.to_csv('./result/HorusEye/record_attack.csv')
+             elif KITSUNE:
+                 record_attack.to_csv('./result/Kitsune/record_attack.csv')
++            else:  # [repro]
++                record_attack.to_csv('./result/Magnifier/record_attack.csv')
+ 
+     if TEST_ROBUST:
+         Poisoning_ratio = [0.01, 0.02, 0.1]

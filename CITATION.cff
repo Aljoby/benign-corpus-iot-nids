@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "Benign Data is the Bottleneck: code and results"
+type: software
+license: MIT
+authors:
+  - family-names: Alshareef
+    given-names: Muhannad
+    affiliation: "King Fahd University of Petroleum and Minerals"
+  - family-names: Aljoby
+    given-names: Walid
+    affiliation: "King Fahd University of Petroleum and Minerals"
+  - family-names: Hammoudeh
+    given-names: Mohammad
+    affiliation: "King Fahd University of Petroleum and Minerals"
+  - family-names: Brik
+    given-names: Bouziane
+    affiliation: "University of Sharjah"
+preferred-citation:
+  type: article
+  title: "Benign Data is the Bottleneck: How the Benign Corpus Shapes Low-False-Positive Detection in Unsupervised IoT Anomaly Detectors"
+  authors:
+    - family-names: Alshareef
+      given-names: Muhannad
+    - family-names: Aljoby
+      given-names: Walid
+    - family-names: Hammoudeh
+      given-names: Mohammad
+    - family-names: Brik
+      given-names: Bouziane
+  journal: "IEEE Internet of Things Magazine"
+  notes: "Under review, manuscript IOTMAG-26-00248"
+  year: 2026
